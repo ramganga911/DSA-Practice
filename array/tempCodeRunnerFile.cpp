@@ -1,0 +1,4 @@
+
+            minelement = arr[i];
+        
+        }
