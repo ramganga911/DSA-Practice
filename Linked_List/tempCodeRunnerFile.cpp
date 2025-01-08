@@ -1,1 +1,1 @@
-Print(head);
+ListNode(int x):val(x),next(NULL){}
