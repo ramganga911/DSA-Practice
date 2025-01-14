@@ -35,7 +35,7 @@ node* deleteInBST(node* root , int key){
         {
             node* temp = root->right;
             free(root);
-            return root;
+            return temp;
         }
         else if(root ->right == NULL)
         {
