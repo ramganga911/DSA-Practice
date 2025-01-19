@@ -14,11 +14,15 @@ class Example{
     Example(const Example &obj){
         cout << "Copy constructor called" << endl;
     }
+    ~Example(){
+        cout << "Destructor called" << endl;
+    }
+    
 };
 int main(){
     Example obj1; // Default constructor called
     Example obj2(10); // Parameterized constructor called with value: 10
     Example obj3 = obj1; // Copy constructor called
-    
+
     return 0;
 }
