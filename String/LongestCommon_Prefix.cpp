@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-string longestCommonPrefix(vector<string>&s){
+string longestCommonPrefix(vector<string>&s){ //Time complexity O(n*m) where n is the number of strings and m is the length of the smallest string
     int n = s.size();
     int len = INT_MAX;
     string check ="";
