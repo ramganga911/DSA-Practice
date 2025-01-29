@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-void missingNrepeating(vector<int>& arr){
+void missingNrepeating(vector<int>& arr){ //time complexity O(n) and space complexity O(n)
     int n =arr.size();
     int num[n+1]={0};
     for(int i=0; i<n; i++){
