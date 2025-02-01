@@ -21,9 +21,33 @@ int height(Node *root)
     int right = height(root->right);
     return max(left, right) + 1;
 }
-int countNode(Node* root){
-    if(root == NULL) return 0;
-    return 1+ countNode(root->left)+ countNode(root->right);
+int countNode(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    return 1 + countNode(root->left) + countNode(root->right);
+}
+void leftViewLeft(Node *root, int level, map<int, int> &mp)
+{
+    if (root == NULL)
+        return;
+    if (mp.find(level) == mp.end())
+    {
+        mp[level] = root->data;
+    }
+    leftViewLeft(root->left, level + 1, mp);
+    leftViewLeft(root->right, level + 1, mp);
+}
+void leftView(Node *root)
+{
+    if (root == NULL)
+        return;
+    map<int, int> mp;
+    leftViewLeft(root, 1, mp);
+    for (auto x : mp)
+    {
+        cout << x.second << " " << endl;
+    }
 }
 int main()
 {
@@ -36,7 +60,8 @@ int main()
     root->right->right = new Node(7);
     root->right->right->right = new Node(8);
     root->right->right->right->right = new Node(9);
-    cout << "Height of the tree is: " << height(root);
-    cout << "\n Number of nodes in the tree is: " << countNode(root);
+    cout << "Height of the tree is: " << height(root) << endl;
+    cout << "Number of nodes in the tree is: " << countNode(root) << endl;
+    leftView(root);
     return 0;
 }
