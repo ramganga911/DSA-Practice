@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // 3 Sum
+// Time complexity: O(n^2)
 void ThreeSum(vector<int> &arr, vector<vector<int>> &ans)
 {
     int n = arr.size();
