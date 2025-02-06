@@ -10,14 +10,14 @@ struct Node{
         left = right = nullptr;
     }
 };
-void levelOrder(Node* root){
+void levelOrder(Node* root, vector<int>& ans){ // time complexity: O(n) and space complexity: O(n)
     if(root==NULL) return;
     queue<Node*>q;
     q.push(root);
     while(!q.empty()){
         Node* node = q.front();
         q.pop();
-        cout<<node->data<<" ";
+        ans.push_back(node->data);
         if(node->left!=nullptr){
             q.push(node->left);
         }
@@ -34,6 +34,10 @@ int main(){
     root->left->left = new Node(4);
     root->left->right = new Node(5);
     root->right->right = new Node(6);
-    levelOrder(root);
+    vector<int> ans;
+    levelOrder(root ,ans);
+    for(auto x: ans){
+        cout << x << " ";
+    }
     return 0;
 }
