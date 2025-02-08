@@ -10,34 +10,47 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-vector<int> rightView(TreeNode *root)
-{
-    if (!root)
-        return {};
-    queue<TreeNode *> q;
-    q.push(root);
-    vector<int> ans;
-    TreeNode *rightMostNode = NULL;
-    while (!q.empty())
-    {
-        int n = q.size();
+// vector<int> rightView(TreeNode *root)
+// {
+//     if (!root)
+//         return {};
+//     queue<TreeNode *> q;
+//     q.push(root);
+//     vector<int> ans;
+//     TreeNode *rightMostNode = NULL;
+//     while (!q.empty())
+//     {
+//         int n = q.size();
 
-        while (n--)
-        {
-            TreeNode *temp = q.front();
-            q.pop();
-            rightMostNode = temp;
-            if (temp->left != NULL)
-            {
-                q.push(temp->left);
-            }
-            if (temp->right != NULL)
-            {
-                q.push(temp->right);
-            }
-        }
-        ans.push_back(rightMostNode->val);
+//         while (n--)
+//         {
+//             TreeNode *temp = q.front();
+//             q.pop();
+//             rightMostNode = temp;
+//             if (temp->left != NULL)
+//             {
+//                 q.push(temp->left);
+//             }
+//             if (temp->right != NULL)
+//             {
+//                 q.push(temp->right);
+//             }
+//         }
+//         ans.push_back(rightMostNode->val);
+//     }
+//     return ans;
+// }
+void solve(TreeNode* root, vector<int>&ans, int level){ // time complexity: O(n) and space complexity: O(n)
+    if(root == NULL) return ;
+    if(ans.size() == level){
+        ans.push_back(root->val);
     }
+    solve(root->right, ans, level+1);
+    solve(root->right, ans, level+1);
+}
+vector<int> rightView(TreeNode* root){
+    vector<int> ans;
+    solve(root, ans, 0);
     return ans;
 }
 int main()
